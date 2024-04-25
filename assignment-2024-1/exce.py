@@ -1,3 +1,5 @@
+import argparse
+
 def FindCenter(startX, endX, startY, endY):
         return ((startX + endX) // 2, (startY + endY) // 2)
 
@@ -50,10 +52,23 @@ def solve(n, startX, endX, startY, endY, tileX, tileY, color):
             solve(n-1, cX, endX, cY, endY, fourthX, fourthY,'R')
 
 def main():
+    parser = argparse.ArgumentParser(description='Tromino Puzzle Solver')
+    parser.add_argument('n', type=int, help='Rectangle size (size will be 2^n x 2^n)')
+    args = parser.parse_args()
+
+
+
     global tileMap
-    n = 2
-    tileX = 3
-    tileY = 3
+    n = args.n
+    if n==1:
+        tileX = 0
+        tileY = 1
+    elif n>1:
+        tileX = 3
+        tileY = 3
+    else:
+        raise ValueError("Invalid value of rectangle size")
+        
     size = 2**n
     tileMap = [['x' if i==tileX and j==tileY else '0' for j in range(size)] for i in range(size)]
     printMap(tileMap)
