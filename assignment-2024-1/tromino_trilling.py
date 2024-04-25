@@ -84,7 +84,7 @@ def main():
         raise ValueError("Invalid value of rectangle size")
         
     size = 2**n
-    tileMap = [['x' if i==tileX and j==tileY else '0' for j in range(size)] for i in range(size)]
+    tileMap = [['X' if i==tileX and j==tileY else '0' for j in range(size)] for i in range(size)]
     printMap(tileMap)
     solve(n, 0, size-1, 0, size-1, tileX, tileY)
     printMap(tileMap)
