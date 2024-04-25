@@ -17,6 +17,16 @@ def printMap(tileMap):
             print("%s" % tileMap[i][j], end=" ")
         print()
     print()
+    
+def outputToFile(tileMap):
+    size = len(tileMap)
+    filename= 'output.txt'
+    with open(filename, 'w') as f:
+        for i in range(size):
+            for j in range(size):
+                f.write("%s " % tileMap[i][j])
+            f.write("\n")
+        f.write("\n")
 
 def solve(n, startX, endX, startY, endY, tileX, tileY):
         global tileMap
@@ -78,6 +88,7 @@ def main():
     printMap(tileMap)
     solve(n, 0, size-1, 0, size-1, tileX, tileY)
     printMap(tileMap)
+    outputToFile(tileMap)
 
 
 if __name__ == "__main__":
