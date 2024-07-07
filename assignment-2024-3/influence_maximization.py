@@ -81,7 +81,7 @@ if __name__ == "__main__":
     parser.add_argument('-r', type=int, help='Seed')
     args = parser.parse_args()
     
-    random.seed(42)
+    random.seed(args.r)
     graph = read_graph(args.input_file)
     seeds, influence = maximize_influence(graph, args.p, args.k, args.method, args.mc)
     inf=[]
